@@ -1,4 +1,4 @@
-![Nanny - Assistente Virtual para Cuidados com Bebês](@header.png)
+![Nanny - Assistente Virtual para Cuidados com Bebês](https://github.com/jorge-lba/nanny-agent/blob/main/header.png)
 # Nanny
 
 Você já sentiu insegurança ou sobrecarga ao cuidar de um bebê? Já ficou em dúvida sobre horários de alimentação, vacinas ou como oferecer a melhor introdução alimentar? A rotina dos pais é cheia de desafios, dúvidas e decisões importantes — e é aí que a Nanny entra para transformar essa experiência!
@@ -13,6 +13,9 @@ Se você busca tecnologia aplicada ao bem-estar familiar, praticidade e informa�
 - Assistência em tempo real via chat
 - Sugestões personalizadas de cuidados infantis
 - Interface amigável e intuitiva
+
+### Chat
+
 
 ## 🛠️ Ferramentas e Agentes
 
