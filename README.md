@@ -15,6 +15,8 @@ Se você busca tecnologia aplicada ao bem-estar familiar, praticidade e informa�
 - Interface amigável e intuitiva
 
 ### Chat
+Chat desenvolvido em nextJS para interação com o agente de ia.
+![Gif - Chat Nanny Agent](https://github.com/jorge-lba/nanny-agent/blob/main/chat.gif)
 
 
 ## 🛠️ Ferramentas e Agentes
