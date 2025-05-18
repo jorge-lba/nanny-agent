@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- O projeto está usando o NextJs na versão 15.3.2
+- Está usando o shadcn como lib de componentes para o front: [Documentação Shadcn](mdc:https:/ui.shadcn.com/docs/installation)
+- Deve usar sempre termos em ingles na implementação do código, variaveis, classes, funções, nome de arquivos e etc.
+- Quando adicionados comentários no código deve ser em portugues do brasil
+- Quando adicionadas saida de logs ou respostas deve ser em portugues do brasil
+- O código de front e rotas estão no src/app e scr/components
+- O código do back está em src/server
+- Siga boas práticas para funções e métodos, que se tiver mais de 2 parametros deve ser um objeto
+- Para nomear arquivos use o padrão kebab-case
+- Deve levar em consideração padrões de desenvolvimento do DDD
