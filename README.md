@@ -1,8 +1,11 @@
+![Nanny - Assistente Virtual para Cuidados com Bebês](@header.png)
 # Nanny
 
-## 📝 Sobre o Projeto
+Você já sentiu insegurança ou sobrecarga ao cuidar de um bebê? Já ficou em dúvida sobre horários de alimentação, vacinas ou como oferecer a melhor introdução alimentar? A rotina dos pais é cheia de desafios, dúvidas e decisões importantes — e é aí que a Nanny entra para transformar essa experiência!
 
-Nanny é uma assistente virtual inteligente (babá) que ajuda os pais a cuidarem de seus filhos. Utilizando a tecnologia avançada do Google Gemini AI, a Nanny oferece suporte personalizado para cada família, mantendo um tom amigável e jovem em suas interações.
+A Nanny é uma assistente virtual inteligente, criada para ser a parceira ideal de mães e pais modernos. Utilizando o poder da IA generativa do Google Gemini, ela oferece suporte personalizado, lembretes automáticos, dicas práticas e recomendações seguras para o cuidado diário dos bebês. Tudo isso com uma comunicação leve, jovem e acolhedora.
+
+Se você busca tecnologia aplicada ao bem-estar familiar, praticidade e informação confiável, a Nanny é a solução que vai revolucionar a forma como cuidamos das próximas gerações. Venha experimentar o futuro do cuidado infantil com IA!
 
 ### Principais Funcionalidades:
 - Cadastro e gerenciamento de perfis de pais e bebês
@@ -120,3 +123,23 @@ pnpm lint
 ## 📄 Licença
 
 Este projeto está sob a licença MIT.
+
+## 💡 Ideias de Funcionalidades Futuras
+
+Abaixo estão ideias para futuras funcionalidades da Nanny, baseadas no planejamento do projeto:
+
+### Lembretes
+- **Hora do mama:** Cria lembretes da hora de dar o mama para o bebê, levando em consideração o perfil dos pais, marcos do bebê e idade para calcular o intervalo ideal de alimentação.
+- **Hora da fralda:** Lembretes para troca de fralda.
+- **Hora da soneca:** Lembretes para o horário de dormir do bebê.
+- **Vacina chegando:** Avisos antecipados sobre vacinas próximas.
+- **Dia da vacina:** Lembrete no dia da vacinação.
+
+### Assistência na Vacinação
+- Quais vacinas serão dadas no mês.
+- Verificação se as vacinas estão em dia.
+
+### Introdução Alimentar
+- Dicas e cuidados sobre alimentação.
+- Receitas personalizadas.
+- Cardápios sugeridos para cada fase do bebê.

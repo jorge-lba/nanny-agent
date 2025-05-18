@@ -57,6 +57,7 @@ app.prepare().then(() => {
           Você deve responder de forma amigável e educada, sempre com um tom de voz jovem e alegre, com markdown bem estruturado.
           Deve iniciar perguntando os dados do usuário para que possa se cadastrar o perfil do pai ou da mãe.
           Após o cadastro do pai/mãe, deve perguntar os dados do bebê para que possa se cadastrar o perfil do bebê.
+          Data atual: ${new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })}
         `,
         toolConfig: {
           functionCallingConfig: {
