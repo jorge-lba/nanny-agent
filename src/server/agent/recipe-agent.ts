@@ -13,9 +13,9 @@ interface Recipe {
 export class RecipeAgent {
   private genAI: GoogleGenAI;
 
-  constructor(apiKey: string) {
+  constructor() {
     this.genAI = new GoogleGenAI({
-      apiKey: apiKey
+      apiKey: process.env.GEMINI_API_KEY
     });
   }
 
@@ -27,7 +27,7 @@ export class RecipeAgent {
     return ageInMonths;
   }
 
-  private async searchRecipes(ageInMonths: number): Promise<string> {
+  private async searchRecipes(ageInMonths: number, message: string): Promise<string> {
     const response = await this.genAI.models.generateContent({
       model: "gemini-2.5-flash-preview-04-17",
       contents: [
@@ -35,8 +35,8 @@ export class RecipeAgent {
           role: "user",
           parts: [{
             text: `Busque uma receita nutritiva e segura para um bebê de ${ageInMonths} meses. 
-    A receita deve ser adequada para a idade e incluir ingredientes que o bebê já pode consumir.
-    Retorne apenas o texto da receita em formato markdown.` }]
+            Caso seja relevante, use a mensagem ${message} para buscar receitas.
+            ` }]
         }
       ],
       config: {
@@ -75,16 +75,16 @@ export class RecipeAgent {
     return response?.candidates?.[0]?.content?.parts?.[0]?.text || '';
   }
 
-  async getRecipesForParent(parentProfile: ParentProfile): Promise<Map<string, string>> {
+  async getRecipesForParent(parentProfile: ParentProfile, message: string): Promise<string> {
     const recipes = new Map<string, string>();
 
     for (const baby of parentProfile.babies) {
       const ageInMonths = this.calculateBabyAge(baby.birthDate);
-      const recipeText = await this.searchRecipes(ageInMonths);
+      const recipeText = await this.searchRecipes(ageInMonths, message);
       const formattedRecipe = await this.formatRecipe(recipeText, baby.name);
       recipes.set(baby.name, formattedRecipe);
     }
 
-    return recipes;
+    return Array.from(recipes.values()).join('\n\n');
   }
 } 

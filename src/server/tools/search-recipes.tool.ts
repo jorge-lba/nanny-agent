@@ -3,9 +3,10 @@ import { FunctionDeclaration, Schema, Tool, Type } from '@google/genai';
 class Parameters implements Schema {
   type: Type = Type.OBJECT;
   properties: Record<string, Schema> = {
-    parentUuid: { type: Type.STRING }
+    parentUuid: { type: Type.STRING },
+    message: { type: Type.STRING, description: 'Mensagem enviada pelo usuário para buscar receitas' }
   };
-  required: string[] = ['parentUuid'];
+  required: string[] = ['parentUuid', 'message'];
 }
 
 class Response implements Schema {

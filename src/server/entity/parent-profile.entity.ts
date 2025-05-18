@@ -7,8 +7,8 @@ export class ParentProfile {
   private readonly _name: string;
   private readonly _birthDate: string;
   private readonly _aboutMe: string;
-  private readonly _memories: MemorySummary[];
-  private readonly _babies: BabyProfile[];
+  private _memories: MemorySummary[];
+  private _babies: BabyProfile[];
 
   constructor({ uuid, name, birthDate, aboutMe, memories = [], babies = [] }: {
     uuid?: string;
@@ -50,7 +50,6 @@ export class ParentProfile {
   get babies(): BabyProfile[] {
     return this._babies;
   }
-
   // Exemplo de método de domínio para adicionar um novo resumo de perfil
   addMemorySummary(memorySummary: MemorySummary): ParentProfile {
     return new ParentProfile({
@@ -63,15 +62,8 @@ export class ParentProfile {
   }
 
   // Método de domínio para adicionar um novo perfil de bebê
-  addBabyProfile(babyProfile: BabyProfile): ParentProfile {
-    return new ParentProfile({
-      uuid: this._uuid,
-      name: this._name,
-      birthDate: this._birthDate,
-      aboutMe: this._aboutMe,
-      memories: this._memories,
-      babies: [...this._babies, babyProfile]
-    });
+  addBabyProfile(babyProfile: BabyProfile): void {
+    this._babies = [...this._babies, babyProfile];
   }
 }
 

@@ -10,8 +10,10 @@ import { ParentProfile } from './entity/parent-profile.entity';
 import { RegisterBabyProfileFunction } from './tools/register-baby-profile.tool';
 import { BabyProfile } from './entity/baby-profile.entity';
 import { config } from 'dotenv';
+import { SearchRecipesFunction } from './tools/search-recipes.tool';
+import { RecipeAgent } from './agent/recipe-agent';
 
-config();
+config({ path: '.env' });
 
 const port = parseInt(process.env.PORT || '3333', 10);
 const dev = process.env.NODE_ENV !== 'production';
@@ -19,12 +21,13 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const genAI = new GoogleGenAI({
-  apiKey: process.env.GOOGLE_API_KEY,
+  apiKey: process.env.GEMINI_API_KEY,
 });
 
 const parentProfileRepository = new ParentProfileRepository();
 const registerParentProfile = new RegisterParentProfileFunction();
 const registerBabyProfile = new RegisterBabyProfileFunction();
+const searchRecipes = new SearchRecipesFunction();
 
 app.prepare().then(() => {
   const server = createServer((req, res) => {
@@ -65,8 +68,9 @@ app.prepare().then(() => {
             functionDeclarations: [
               registerBabyProfile,
               registerParentProfile,
+              searchRecipes,
             ]
-          }
+          },
         ],
       },
     });
@@ -135,11 +139,18 @@ app.prepare().then(() => {
               birthDate: part.functionCall?.args?.birthDate as string,
             });
 
-            if (parentProfile) {
-              parentProfile.addBabyProfile(babyProfile);
-              parentProfileRepository.save(parentProfile);
+            const profile = parentProfileRepository.findByUuid(parentProfile?.uuid as string);
+
+            if (profile) {
+              profile.addBabyProfile(babyProfile);
+              parentProfileRepository.save(profile);
               socket.emit('mensagem', 'Perfil do bebê registrado com sucesso!');
             }
+          }
+          if (part.functionCall?.name === 'search_recipes') {
+            const recipeAgent = new RecipeAgent();
+            const recipes = await recipeAgent.getRecipesForParent(parentProfile!, part.functionCall?.args?.message as string);
+            socket.emit('mensagem', recipes);
           }
         }
 
